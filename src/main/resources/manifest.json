@@ -1,0 +1,14 @@
+{
+  "name": "Foos League",
+  "short_name": "Foos League",
+  "start_url": "{{appUrl}}",
+  "display": "standalone",
+  "description": "Manage your foosball league.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}
