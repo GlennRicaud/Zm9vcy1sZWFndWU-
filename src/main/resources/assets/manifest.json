@@ -1,0 +1,12 @@
+{
+  "short_name": "Foos League",
+  "name": "Foos League",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".?launcher=true"
+}
