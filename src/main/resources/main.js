@@ -30,13 +30,13 @@ router.get('/manifest.json', function () {
 });
 
 router.get('/sw.js', function () {
-    var appUrl = urlLib.getBaseUrl();
+    var baseUrl = urlLib.getBaseUrl();
     return {
         headers: {
-            'Service-Worker-Allowed': appUrl
+            'Service-Worker-Allowed': baseUrl
         },
         body: mustacheLib.render(swTemplate, {
-            appUrl: appUrl
+            appUrl: baseUrl
         }),
         contentType: 'application/javascript'
     };
