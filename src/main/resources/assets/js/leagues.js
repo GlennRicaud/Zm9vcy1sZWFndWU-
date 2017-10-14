@@ -28,8 +28,7 @@ class LeaguesLayout extends RcdMaterialLayout {
 
     retrieveLeagues() {
         return GraphQlService.fetch('{leagues(first:-1){id, name, imageUrl}}')
-            .then(json => json.data.leagues);
-        //TODO Handle errors
+            .then(data => data.leagues);
     }
 }
 
@@ -37,20 +36,20 @@ class LeagueRow extends RcdDivElement {
     constructor(league) {
         super();
         this.league = league;
+        this.leagueImage = new RcdImageIcon(config.officeLeagueAppUrl + this.league.imageUrl)
+            .addClass('row-image')
+            .init();
+        this.leagueName = new RcdTextDivElement(this.league.name)
+            .addClass('row-text')
+            .init();
     }
 
     init() {
-        const leagueImage = new RcdImageIcon(config.officeLeagueAppUrl + this.league.imageUrl)
-            .addClass('row-image')
-            .init();
-        const leagueName = new RcdTextDivElement(this.league.name)
-            .addClass('row-text')
-            .init();
         return super.init()
             .addClass('row')
             .addClass('rcd-clickable')
-            .addChild(leagueImage)
-            .addChild(leagueName)
+            .addChild(this.leagueImage)
+            .addChild(this.leagueName)
             .addClickListener(() => RcdHistoryRouter.setState('league', {id: this.league.id}))
     }
 }

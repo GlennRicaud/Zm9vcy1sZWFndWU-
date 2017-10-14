@@ -6,7 +6,8 @@ class GraphQlService extends RcdObject {
                 query: query,
                 variables: variables
             })
-        }).then(response => response.json());
+        }).then(response => response.json())
+            .then(json => json.data);
         //TODO Handle errors
     }
 }
