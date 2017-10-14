@@ -19,10 +19,15 @@ dependencies {
     include "com.enonic.xp:lib-portal:${xpVersion}"
     include "com.enonic.xp:lib-mustache:${xpVersion}"
     include "com.enonic.lib:lib-router:1.0.0"
+    include "systems.rcd.js.fwk.core:rcd-jsfwk-core:3.0.0-alpha-2"
+    include "systems.rcd.js.fwk.material:rcd-jsfwk-material:3.0.0-alpha-1"
 }
 
 repositories {
     mavenLocal()
     jcenter()
     xp.enonicRepo()
+    maven {
+        url "http://dl.bintray.com/rcd-systems/rcd-repo"
+    }
 }
