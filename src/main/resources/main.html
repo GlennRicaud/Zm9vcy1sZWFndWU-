@@ -23,7 +23,7 @@
 }</script>
 
 <script>
-    new FoosLeagueApplication().init().start();
+    FoosLeagueApplication.getInstance().start();
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
