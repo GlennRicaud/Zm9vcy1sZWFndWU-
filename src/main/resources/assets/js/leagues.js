@@ -21,7 +21,7 @@ class LeaguesLayout extends RcdMaterialLayout {
     constructor() {
         super();
         this.query = `{
-            leagues(first:-1){
+            leagues{
                 id,
                 name,
                 imageUrl

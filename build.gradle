@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.enonic.xp.app' version '1.0.11'
+    id 'com.eriwen.gradle.js' version '2.12.0'
 }
 
 xp {
@@ -54,3 +55,12 @@ task lessc( dependsOn: processResources ) << {
     }
 }
 jar.dependsOn lessc
+
+
+task mergeJs( type: com.eriwen.gradle.js.tasks.CombineJsTask ) {
+    source = ["${rootProject.buildDir}/resources/main/assets/js/graphql.js",
+              "${rootProject.buildDir}/resources/main/assets/js/leagues.js",
+              "${rootProject.buildDir}/resources/main/assets/js/main.js"]
+    dest = file( "${rootProject.buildDir}/resources/main/assets/js/foos-league.js" )
+}
+jar.dependsOn mergeJs

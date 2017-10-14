@@ -8,5 +8,3 @@ class FoosLeagueApplication extends RcdMaterialSinglePageApplication {
             .addRoute(new LeaguesRoute().init());
     }
 }
-
-new FoosLeagueApplication().init().start();

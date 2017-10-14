@@ -12,8 +12,7 @@
     <script src="{{baseUrl}}/js/rcd-jsfwk-material.js"></script>
 
     <link rel="stylesheet" href="{{baseUrl}}/style/main.css">
-    <script src="{{baseUrl}}/js/graphql.js"></script>
-    <script src="{{baseUrl}}/js/leagues.js"></script>
+    <script src="{{baseUrl}}/js/foos-league.js"></script>
 </head>
 <body class="rcd-body">
 
@@ -23,8 +22,9 @@
     officeLeagueAppUrl: "{{officeLeagueAppUrl}}"
 }</script>
 
-<script src="{{baseUrl}}/js/main.js"></script>
 <script>
+    new FoosLeagueApplication().init().start();
+
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('{{baseUrl}}/sw.js', {scope: "{{baseUrl}}"})
