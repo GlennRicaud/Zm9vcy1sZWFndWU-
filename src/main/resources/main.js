@@ -1,33 +1,44 @@
 var mustacheLib = require('/lib/xp/mustache');
-var portalLib = require('/lib/xp/portal');
 var router = require('/lib/router')();
+
+var urlLib = require("/lib/url");
 
 var mainTemplate = resolve("main.html");
 var manifestTemplate = resolve("manifest.json");
+var swTemplate = resolve("sw.js");
 
 router.get('/', function (req) {
-    var appUrl = getAppUrl();
-    var baseUrl = endWithSlash(appUrl) ? appUrl.substring(0, appUrl.length - 1) : appUrl;
-    var body = mustacheLib.render(mainTemplate, {
-        appUrl: appUrl,
-        baseUrl: baseUrl
-    });
-
+    var appUrl = urlLib.getAppUrl();
+    var baseUrl = urlLib.getBaseUrl();
     return {
-        body: body,
+        body: mustacheLib.render(mainTemplate, {
+            appUrl: appUrl,
+            baseUrl: baseUrl
+        }),
         contentType: 'text/html'
     };  
 });
 
 router.get('/manifest.json', function () {
-    var appUrl = getAppUrl();
-    var body = mustacheLib.render(manifestTemplate, {
-        appUrl: appUrl
-    });
-
+    var appUrl = urlLib.getAppUrl();
     return {
-        body: body,
+        body: mustacheLib.render(manifestTemplate, {
+            appUrl: appUrl
+        }),
         contentType: 'text/html'
+    };
+});
+
+router.get('/sw.js', function () {
+    var appUrl = urlLib.getBaseUrl();
+    return {
+        headers: {
+            'Service-Worker-Allowed': appUrl
+        },
+        body: mustacheLib.render(swTemplate, {
+            appUrl: appUrl
+        }),
+        contentType: 'application/javascript'
     };
 });
 
@@ -35,10 +46,3 @@ exports.get = function (req) {
     return router.dispatch(req);
 };
 
-function getAppUrl() {
-    return portalLib.url({path:'/app/systems.rcd.enonic.foosleague'});
-}
-
-function endWithSlash(url) {
-    return url.charAt(url.length - 1) === '/';
-}
