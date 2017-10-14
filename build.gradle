@@ -4,12 +4,17 @@ plugins {
 }
 
 xp {
-  version = xpVersion
+    version = xpVersion
 }
 
 app {
     name = project.ext.appName
     displayName = project.ext.displayName
+}
+
+configurations {
+    rcdjsfwkcore
+    rcdjsfwkmaterial
 }
 
 dependencies {
@@ -19,8 +24,8 @@ dependencies {
     include "com.enonic.xp:lib-portal:${xpVersion}"
     include "com.enonic.xp:lib-mustache:${xpVersion}"
     include "com.enonic.lib:lib-router:1.0.0"
-    include "systems.rcd.js.fwk.core:rcd-jsfwk-core:3.0.0-alpha-2"
-    include "systems.rcd.js.fwk.material:rcd-jsfwk-material:3.0.0-alpha-1"
+    rcdjsfwkcore "systems.rcd.js.fwk.core:rcd-jsfwk-core:3.0.0-alpha-2"
+    rcdjsfwkmaterial "systems.rcd.js.fwk.material:rcd-jsfwk-material:3.0.0-alpha-1"
 }
 
 repositories {
@@ -31,3 +36,21 @@ repositories {
         url "http://dl.bintray.com/rcd-systems/rcd-repo"
     }
 }
+
+task extractRcdJsFwk( type: Copy ) {
+    from { configurations.rcdjsfwkcore.collect { zipTree( it ); } }
+    from { configurations.rcdjsfwkmaterial.collect { zipTree( it ); } }
+    into "${rootProject.buildDir}/resources/main/"
+    exclude 'META-INF/**'
+}
+processResources.dependsOn extractRcdJsFwk
+
+//TODO Replace by proper plugin
+task lessc( dependsOn: processResources ) << {
+    exec {
+        executable 'lessc'
+        args 'build/resources/main/assets/style/main.less',
+             'build/resources/main/assets/style/main.css'
+    }
+}
+jar.dependsOn lessc
