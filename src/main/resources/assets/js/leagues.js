@@ -18,6 +18,16 @@ class LeaguesRoute extends RcdMaterialRoute {
 }
 
 class LeaguesLayout extends RcdMaterialLayout {
+    constructor() {
+        super();
+        this.query = `{
+            leagues(first:-1){
+                id,
+                name,
+                imageUrl
+            }
+        }`
+    }
 
     refresh() {
         this.retrieveLeagues().then(leagues => {
@@ -27,7 +37,7 @@ class LeaguesLayout extends RcdMaterialLayout {
     }
 
     retrieveLeagues() {
-        return GraphQlService.fetch('{leagues(first:-1){id, name, imageUrl}}')
+        return GraphQlService.fetch(this.query)
             .then(data => data.leagues);
     }
 }
