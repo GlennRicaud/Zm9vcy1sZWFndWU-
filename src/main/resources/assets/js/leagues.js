@@ -5,13 +5,13 @@ class LeaguesRoute extends RcdMaterialRoute {
             name: 'Leagues',
             //iconArea: new RcdImageIconArea(config.baseUrl + '/icons/leagues.svg').init()
         });
+        this.layout = new LeaguesLayout().init();
     }
 
     init() {
-        const layout = new LeaguesLayout().init();
         this.callback = (main) => {
-            main.addChild(layout);
-            layout.refresh();
+            this.layout.refresh()
+                .then(() => main.addChild(this.layout));
         }
         return this;
     }
@@ -30,7 +30,8 @@ class LeaguesLayout extends RcdMaterialLayout {
     }
 
     refresh() {
-        this.retrieveLeagues().then(leagues => {
+        this.clear();
+        return this.retrieveLeagues().then(leagues => {
             leagues.map(league => new LeagueRow(league).init())
                 .forEach(leagueRow => this.addChild(leagueRow));
         });
