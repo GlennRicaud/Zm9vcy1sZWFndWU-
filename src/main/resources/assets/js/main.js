@@ -2,9 +2,10 @@ class FoosLeagueApplication extends RcdMaterialSinglePageApplication {
     constructor() {
         super('Foos League');
     }
-    
+
     init() {
-        return super.init();
+        return super.init()
+            .addRoute(new LeaguesRoute().init());
     }
 }
 
