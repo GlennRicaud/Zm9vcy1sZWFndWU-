@@ -1,11 +1,6 @@
 
-.row {
-  @media (max-width: @rcd-material-max-mobile-width) {
-    padding: 8px;
-  }
-  @media (min-width: @rcd-material-min-tablet-width) {
-    padding: 12px;
-  }
+.row :extend(.rcd-flex-hbox) {
+  height: 48px;
   background-color: #eeeeee;
   margin-bottom: 2px;
   margin-top: 2px;
@@ -13,4 +8,14 @@
 
 .row:hover {
   background-color: #d0d0d0;
+}
+
+.row-image {
+  width: 36px;
+  height: 36px;
+  margin: 6px;
+}
+
+.row-text {
+  margin-left: 6px;
 }

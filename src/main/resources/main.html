@@ -7,10 +7,10 @@
 
     <link rel="manifest" href="{{baseUrl}}/manifest.json">
     <link rel="icon" href="{{baseUrl}}/icon.png">
-    
+
     <script src="{{baseUrl}}/js/rcd-jsfwk-core.js"></script>
     <script src="{{baseUrl}}/js/rcd-jsfwk-material.js"></script>
-    
+
     <link rel="stylesheet" href="{{baseUrl}}/style/main.css">
     <script src="{{baseUrl}}/js/leagues.js"></script>
 </head>
@@ -18,16 +18,17 @@
 
 <script>const config = {
     appUrl: "{{appUrl}}",
-    baseUrl: "{{baseUrl}}"
+    baseUrl: "{{baseUrl}}",
+    officeLeagueAppUrl: "{{officeLeagueAppUrl}}"
 }</script>
 
 <script src="{{baseUrl}}/js/main.js"></script>
 <script>
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             navigator.serviceWorker.register('{{baseUrl}}/sw.js', {scope: "{{baseUrl}}"})
                 .then((registration) => console.log('Registration successful, scope is:', registration.scope))
-                .catch((error) => console.log('Service worker registration failed, error:', error));    
+                .catch((error) => console.log('Service worker registration failed, error:', error));
         });
     }
 </script>

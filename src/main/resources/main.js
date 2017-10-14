@@ -13,7 +13,8 @@ router.get('/', function (req) {
     return {
         body: mustacheLib.render(mainTemplate, {
             appUrl: appUrl,
-            baseUrl: baseUrl
+            baseUrl: baseUrl,
+            officeLeagueAppUrl: '/portal/draft/office-league/app' //TODO
         }),
         contentType: 'text/html'
     };  

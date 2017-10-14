@@ -27,10 +27,10 @@ class LeaguesLayout extends RcdMaterialLayout {
     }
 
     retrieveLeagues() {
-        return fetch('/_/service/com.enonic.app.officeleague/graphql', {
+        return fetch(config.baseUrl + '/_/service/com.enonic.app.officeleague/graphql', {
             method: 'POST',
             body: JSON.stringify({
-                query: '{leagues{id, name}}'
+                query: '{leagues(first:-1){id, name, imageUrl}}'
             })
         }).then(response => response.json())
             .then(json => json.data.leagues);
@@ -45,10 +45,16 @@ class LeagueRow extends RcdDivElement {
     }
 
     init() {
-        const leagueName = new RcdTextDivElement(this.league.name).init();
+        const leagueImage = new RcdImageIcon(config.officeLeagueAppUrl + this.league.imageUrl)
+            .addClass('row-image')
+            .init();
+        const leagueName = new RcdTextDivElement(this.league.name)
+            .addClass('row-text')
+            .init();
         return super.init()
             .addClass('row')
             .addClass('rcd-clickable')
+            .addChild(leagueImage)
             .addChild(leagueName);
     }
 }
