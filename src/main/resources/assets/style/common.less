@@ -1,4 +1,17 @@
 .panel :extend(.rcd-flex-vbox) {
   background-color: #fff;
   border: #ddd 1px solid;
+  padding: 8px;
+
+  .panel-title :extend(.rcd-flex-hbox) {
+    justify-content: center;
+    color: @rcd-primary-color;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .panel-action {
+    justify-content: center;
+    background-color: #ddd;
+  }
 }

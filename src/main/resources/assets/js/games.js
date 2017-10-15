@@ -5,14 +5,19 @@ const GameSide = {
 
 class GamePanel extends Panel {
     constructor(game, title) {
-        super(title || game.time);
+        super(
+            {title: title || game.time, action: {text: 'View details', callback: () => RcdHistoryRouter.setState('game', {id: game.id})}});
         this.gameScoreLine = new GameScoreLine(game).init();
         this.gameSideNamesLine = new GameSideNamesLine(game).init();
     }
 
     init() {
         return super.init()
-            .addClass('rcd-clickable')
+            .addClass('rcd-clickable');
+    }
+
+    addPanelContent() {
+        return super.addPanelContent()
             .addChild(this.gameScoreLine)
             .addChild(this.gameSideNamesLine);
     }

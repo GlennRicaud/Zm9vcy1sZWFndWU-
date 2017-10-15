@@ -1,7 +1,10 @@
 class Panel extends RcdDivElement {
-    constructor(title) {
+    constructor(params = {}) {
         super();
-        this.title = title && new PanelTitle(title);
+        this.title = params.title && new PanelTitle(params.title).init();
+        this.action = params.action && new RcdMaterialButtonArea(params.action.text, params.action.callback, RcdMaterialButtonType.FLAT)
+            .init()
+            .addClass('panel-action');
     }
 
     init() {
@@ -9,6 +12,14 @@ class Panel extends RcdDivElement {
         if (this.title) {
             this.addChild(this.title);
         }
+        this.addPanelContent();
+        if (this.action) {
+            this.addChild(this.action);
+        }
+        return this;
+    }
+
+    addPanelContent() {
         return this;
     }
 }
