@@ -37,6 +37,8 @@ class LeagueLayout extends RcdMaterialLayout {
                     finished
                     gameTeams {
                         side
+                        score
+                        scoreAgainst
                         team {
                             name
                             imageUrl
@@ -44,6 +46,8 @@ class LeagueLayout extends RcdMaterialLayout {
                       }
                     gamePlayers {
                         side
+                        score
+                        scoreAgainst
                         player {
                             name
                             imageUrl
@@ -60,7 +64,7 @@ class LeagueLayout extends RcdMaterialLayout {
             FoosLeagueApplication.getInstance().setTitle(league.name);
 
             if (league.games.length > 0) {
-                this.addChild(new GamePanel(league.games[0]).init(), 'Latest game');
+                this.addChild(new GamePanel(league.games[0], 'Latest game').init());
             }
         });
     }

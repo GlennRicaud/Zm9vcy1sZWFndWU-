@@ -1,16 +1,19 @@
 class Panel extends RcdDivElement {
     constructor(title) {
         super();
-        this.title = new PanelTitle(title);
+        this.title = title && new PanelTitle(title);
     }
 
     init() {
-        return super.init().addClass('panel');
+        super.init().addClass('panel');
+        if (this.title) {
+            this.addChild(this.title);
+        }
+        return this;
     }
 }
 
 class PanelTitle extends RcdTextDivElement {
-
     init() {
         return super.init().addClass('panel-title');
     }
