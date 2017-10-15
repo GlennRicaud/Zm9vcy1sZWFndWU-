@@ -1,6 +1,9 @@
+@light-grey : #eee;
+@hover-grey : #ddd;
+
 .panel :extend(.rcd-flex-vbox) {
   background-color: #fff;
-  border: #ddd 1px solid;
+  border: @hover-grey 1px solid;
   padding: 12px;
 
   .panel-title :extend(.rcd-flex-hbox) {
@@ -16,5 +19,9 @@
 }
 
 .action {
-  background-color: #e8e8e8;
+  background-color: @light-grey;
+}
+
+.action:hover {
+  background-color: @hover-grey;
 }
