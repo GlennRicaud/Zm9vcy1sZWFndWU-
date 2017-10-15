@@ -39,17 +39,19 @@
 .game-list-item {
   padding-left: 8px;
   padding-right: 8px;
+  justify-content: space-between;
 
   .center :extend(.rcd-flex-hbox) {
   }
 
-  .game-score {
+  .game-score { 
     width: 56px;
   }
 
   .game-side-name {
     flex-basis: 0;
     flex-grow: 1;
+    max-width: 30%;
   }
 
   .game-side-name.red-side {
