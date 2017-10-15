@@ -100,6 +100,7 @@ class GameListItem extends ListItem {
             .addClass('game-side-name');
         this.redName = new RcdTextDivElement(GameHelper.getName(game, GameSide.RED))
             .init()
+            .addClass('red-side')
             .addClass('game-side-name');
         const blueImage = new ImageIcon(GameHelper.getImage(game, GameSide.BLUE))
             .init();

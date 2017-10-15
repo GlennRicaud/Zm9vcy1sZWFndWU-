@@ -10,21 +10,24 @@
 
   .game-side-name {
     max-width: 45%;
+  }
+}
 
-    span {
-      text-overflow: ellipsis;
-      display: inline-block;
-      width: 100%;
-      overflow: hidden;
-    }
+.game-side-name :extend(.rcd-flex-hbox) {
+  span {
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
   }
 }
 
 .game-score :extend(.rcd-flex-hbox) {
+  justify-content: space-around;
   background-color: @rcd-primary-color;
   color: #fff;
   font-weight: 500;
-  padding: 12px;
+  padding: 6px;
 }
 
 .game-score-image {
@@ -34,9 +37,22 @@
 }
 
 .game-list-item {
-  justify-content: space-between;
+  padding-left: 8px;
+  padding-right: 8px;
 
   .center :extend(.rcd-flex-hbox) {
-    
+  }
+
+  .game-score {
+    width: 56px;
+  }
+
+  .game-side-name {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+
+  .game-side-name.red-side {
+    text-align: right;
   }
 }
