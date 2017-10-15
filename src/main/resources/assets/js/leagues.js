@@ -47,7 +47,7 @@ class LeagueRow extends RcdDivElement {
     constructor(league) {
         super();
         this.league = league;
-        this.leagueImage = new RcdImageIcon(config.officeLeagueAppUrl + this.league.imageUrl)
+        this.leagueImage = new ImageIcon( this.league.imageUrl)
             .addClass('row-image')
             .init();
         this.leagueName = new RcdTextDivElement(this.league.name)
