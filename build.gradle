@@ -60,6 +60,7 @@ jar.dependsOn lessc
 task mergeJs( type: com.eriwen.gradle.js.tasks.CombineJsTask ) {
     source = ["${rootProject.buildDir}/resources/main/assets/js/graphql.js",
               "${rootProject.buildDir}/resources/main/assets/js/common.js",
+              "${rootProject.buildDir}/resources/main/assets/js/standalone-items.js",
               "${rootProject.buildDir}/resources/main/assets/js/games.js",
               "${rootProject.buildDir}/resources/main/assets/js/leagues.js",
               "${rootProject.buildDir}/resources/main/assets/js/league.js",

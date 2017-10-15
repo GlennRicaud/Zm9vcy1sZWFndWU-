@@ -43,24 +43,12 @@ class LeaguesLayout extends RcdMaterialLayout {
     }
 }
 
-class LeagueRow extends RcdDivElement {
+class LeagueRow extends StandaloneItem {
     constructor(league) {
-        super();
-        this.league = league;
-        this.leagueImage = new ImageIcon( this.league.imageUrl)
-            .addClass('row-image')
-            .init();
-        this.leagueName = new RcdTextDivElement(this.league.name)
-            .addClass('row-text')
-            .init();
-    }
-
-    init() {
-        return super.init()
-            .addClass('row')
-            .addClass('rcd-clickable')
-            .addChild(this.leagueImage)
-            .addChild(this.leagueName)
-            .addClickListener(() => RcdHistoryRouter.setState('league', {id: this.league.id}))
+        super({
+            image: league.imageUrl,
+            text: league.name,
+            callback: () => RcdHistoryRouter.setState('league', {id: league.id})
+        });
     }
 }
