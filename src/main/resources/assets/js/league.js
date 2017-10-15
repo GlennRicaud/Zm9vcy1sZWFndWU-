@@ -31,7 +31,7 @@ class LeagueLayout extends RcdMaterialLayout {
                     rating
                     ranking
                 }
-                games {
+                latestGames: games(first:10) {
                     id
                     time
                     finished
@@ -63,8 +63,8 @@ class LeagueLayout extends RcdMaterialLayout {
         return this.retrieveLeague().then(league => {
             FoosLeagueApplication.getInstance().setTitle(league.name);
 
-            if (league.games.length > 0) {
-                this.addChild(new GamePanel(league.games[0], 'Latest game').init());
+            if (league.latestGames.length > 0) {
+                this.addChild(new GamePanel(league.latestGames[0], 'Latest game').init());
             }
         });
     }
