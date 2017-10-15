@@ -1,14 +1,14 @@
-class StandaloneItem extends RcdDivElement {
+class ResultItem extends RcdDivElement {
     constructor(params) {
         super();
         if (params.image) {
             this.image = new ImageIcon(params.image)
-                .addClass('standalone-item-image')
+                .addClass('result-item-image')
                 .init();
         }
         if (params.text) {
             this.text = new RcdTextDivElement(params.text)
-                .addClass('row-text')
+                .addClass('result-item-text')
                 .init();
         }
         this.callback = params.callback;
@@ -16,7 +16,7 @@ class StandaloneItem extends RcdDivElement {
 
     init() {
         super.init()
-            .addClass('standalone-item')
+            .addClass('result-item')
             .addChild(this.image)
             .addChild(this.text);
 
@@ -25,6 +25,5 @@ class StandaloneItem extends RcdDivElement {
                 .addClickListener(this.callback)
         }
         return this;
-
     }
 }

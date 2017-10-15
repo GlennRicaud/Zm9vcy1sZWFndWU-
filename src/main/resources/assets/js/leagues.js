@@ -32,8 +32,8 @@ class LeaguesLayout extends RcdMaterialLayout {
     refresh() {
         this.clear();
         return this.retrieveLeagues().then(leagues => {
-            leagues.map(league => new LeagueRow(league).init())
-                .forEach(leagueRow => this.addChild(leagueRow));
+            leagues.map(league => new LeagueResult(league).init())
+                .forEach(leagueResult => this.addChild(leagueResult));
         });
     }
 
@@ -43,7 +43,7 @@ class LeaguesLayout extends RcdMaterialLayout {
     }
 }
 
-class LeagueRow extends StandaloneItem {
+class LeagueResult extends ResultItem {
     constructor(league) {
         super({
             image: league.imageUrl,

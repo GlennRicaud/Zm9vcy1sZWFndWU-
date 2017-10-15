@@ -75,6 +75,23 @@ class GameScore extends RcdDivElement {
 
 }
 
+class GamesPanel extends Panel {
+    constructor(games, title) {
+        super({
+            title: title,
+            action: {text: 'View all', callback: () => RcdHistoryRouter.setState('game', {id: game.id})}
+        });
+        this.gameScoreLine = new GameScoreLine(game).init();
+        this.gameSideNamesLine = new GameSideNamesLine(game).init();
+    }
+
+    addPanelContent() {
+        return super.addPanelContent()
+            .addChild(this.gameScoreLine)
+            .addChild(this.gameSideNamesLine);
+    }
+}
+
 class GameHelper {
     static isTeamGame(game) {
         return game.gameTeams && game.gameTeams.length == 2;
