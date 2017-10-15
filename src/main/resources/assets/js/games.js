@@ -11,11 +11,6 @@ class GamePanel extends Panel {
         this.gameSideNamesLine = new GameSideNamesLine(game).init();
     }
 
-    init() {
-        return super.init()
-            .addClass('rcd-clickable');
-    }
-
     addPanelContent() {
         return super.addPanelContent()
             .addChild(this.gameScoreLine)
