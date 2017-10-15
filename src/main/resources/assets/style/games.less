@@ -3,6 +3,23 @@
   justify-content: space-between;
 }
 
+.game-side-names-line :extend(.rcd-flex-hbox) {
+  font-size: 16px;
+  justify-content: space-between;
+  padding: 12px;
+
+  .game-side-name {
+    max-width: 45%;
+
+    span {
+      text-overflow: ellipsis;
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+}
+
 .game-score :extend(.rcd-flex-hbox) {
   background-color: @rcd-primary-color;
   color: #fff;

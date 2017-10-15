@@ -7,12 +7,14 @@ class GamePanel extends Panel {
     constructor(game, title) {
         super(title || game.time);
         this.gameScoreLine = new GameScoreLine(game).init();
+        this.gameSideNamesLine = new GameSideNamesLine(game).init();
     }
 
     init() {
         return super.init()
             .addClass('rcd-clickable')
-            .addChild(this.gameScoreLine);
+            .addChild(this.gameScoreLine)
+            .addChild(this.gameSideNamesLine);
     }
 }
 
@@ -34,6 +36,25 @@ class GameScoreLine extends RcdDivElement {
             .addChild(this.blueImage)
             .addChild(this.score)
             .addChild(this.redImage);
+    }
+}
+
+class GameSideNamesLine extends RcdDivElement {
+    constructor(game) {
+        super();
+        this.blueName = new RcdTextDivElement(GameHelper.getName(game, GameSide.BLUE))
+            .init()
+            .addClass('game-side-name');
+        this.redName = new RcdTextDivElement(GameHelper.getName(game, GameSide.RED))
+            .init()
+            .addClass('game-side-name');
+    }
+
+    init() {
+        return super.init()
+            .addClass('game-side-names-line')
+            .addChild(this.blueName)
+            .addChild(this.redName);
     }
 }
 
@@ -73,6 +94,14 @@ class GameHelper {
             return GameHelper.getGameTeam(game, side).score + GameHelper.getGameTeam(game, oppositeSide).scoreAgainst;
         } else {
             return GameHelper.getGamePlayer(game, side).score + GameHelper.getGamePlayer(game, oppositeSide).scoreAgainst;
+        }
+    }
+
+    static getName(game, side) {
+        if (GameHelper.isTeamGame(game)) {
+            return GameHelper.getGameTeam(game, side).team.name;
+        } else {
+            return GameHelper.getGamePlayer(game, side).player.name;
         }
     }
 
