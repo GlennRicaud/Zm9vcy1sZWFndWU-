@@ -6,6 +6,13 @@
   border: @hover-grey 1px solid;
   padding: 12px;
 
+  @media (max-width: @rcd-material-max-mobile-width) {
+    margin-bottom: @rcd-material-layout-mobile-margin;
+  }
+  @media (min-width: @rcd-material-min-tablet-width) {
+    margin-bottom: @rcd-material-layout-margin;
+  }
+
   .panel-title :extend(.rcd-flex-hbox) {
     justify-content: center;
     color: @rcd-primary-color;

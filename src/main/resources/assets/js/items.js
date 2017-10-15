@@ -27,3 +27,21 @@ class ResultItem extends RcdDivElement {
         return this;
     }
 }
+
+class ListItem extends RcdDivElement {
+    constructor(params) {
+        super();
+        this.callback = params.callback;
+    }
+
+    init() {
+        super.init()
+            .addClass('list-item');
+
+        if (this.callback) {
+            this.addClass('rcd-clickable')
+                .addClickListener(this.callback)
+        }
+        return this;
+    }
+}

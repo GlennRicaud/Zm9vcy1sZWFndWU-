@@ -76,19 +76,46 @@ class GameScore extends RcdDivElement {
 }
 
 class GamesPanel extends Panel {
-    constructor(games, title) {
+    constructor(games, title, action) {
         super({
             title: title,
-            action: {text: 'View all', callback: () => RcdHistoryRouter.setState('game', {id: game.id})}
+            action: action
         });
-        this.gameScoreLine = new GameScoreLine(game).init();
-        this.gameSideNamesLine = new GameSideNamesLine(game).init();
+        this.gameListItems = games.map(game => new GameListItem(game).init());
     }
 
     addPanelContent() {
         return super.addPanelContent()
-            .addChild(this.gameScoreLine)
-            .addChild(this.gameSideNamesLine);
+            .addChildren(this.gameListItems);
+    }
+}
+
+class GameListItem extends ListItem {
+    constructor(game) {
+        super({
+            callback: () => RcdHistoryRouter.setState('game', {id: game.id})
+        });
+        this.blueImage = new ImageIcon(GameHelper.getImage(game, GameSide.BLUE))
+            .init();
+        this.redImage = new ImageIcon(GameHelper.getImage(game, GameSide.RED))
+            .init();
+        this.blueName = new RcdTextDivElement(GameHelper.getName(game, GameSide.BLUE))
+            .init()
+            .addClass('game-side-name');
+        this.redName = new RcdTextDivElement(GameHelper.getName(game, GameSide.RED))
+            .init()
+            .addClass('game-side-name');
+        this.score = new GameScore(game).init();
+    }
+
+    init() {
+        return super.init()
+            .addClass('game-list-item')
+            .addChild(this.blueName)
+            .addChild(this.blueImage)
+            .addChild(this.score)
+            .addChild(this.redImage)
+            .addChild(this.redName);
     }
 }
 

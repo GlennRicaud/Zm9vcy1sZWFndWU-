@@ -65,6 +65,10 @@ class LeagueLayout extends RcdMaterialLayout {
 
             if (league.latestGames.length > 0) {
                 this.addChild(new GamePanel(league.latestGames[0], 'Latest game').init());
+                this.addChild(new GamesPanel(league.latestGames, 'Latest games', {
+                    text: 'View All',
+                    callback: () => RcdHistoryRouter.setState('games', {leagueId: league.id})
+                }).init());
             }
         });
     }
