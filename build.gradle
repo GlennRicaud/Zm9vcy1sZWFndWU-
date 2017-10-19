@@ -62,6 +62,7 @@ task mergeJs( type: com.eriwen.gradle.js.tasks.CombineJsTask ) {
               "${rootProject.buildDir}/resources/main/assets/js/common.js",
               "${rootProject.buildDir}/resources/main/assets/js/items.js",
               "${rootProject.buildDir}/resources/main/assets/js/games.js",
+              "${rootProject.buildDir}/resources/main/assets/js/ranking.js",
               "${rootProject.buildDir}/resources/main/assets/js/leagues.js",
               "${rootProject.buildDir}/resources/main/assets/js/league.js",
               "${rootProject.buildDir}/resources/main/assets/js/app.js"]
