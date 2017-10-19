@@ -25,8 +25,8 @@ dependencies {
     include "com.enonic.xp:lib-portal:${xpVersion}"
     include "com.enonic.xp:lib-mustache:${xpVersion}"
     include "com.enonic.lib:lib-router:1.0.0"
-    rcdjsfwkcore "systems.rcd.js.fwk.core:rcd-jsfwk-core:3.0.0-SNAPSHOT"
-    rcdjsfwkmaterial "systems.rcd.js.fwk.material:rcd-jsfwk-material:3.0.0-SNAPSHOT"
+    rcdjsfwkcore "systems.rcd.js.fwk.core:rcd-jsfwk-core:3.0.0-alpha-3"
+    rcdjsfwkmaterial "systems.rcd.js.fwk.material:rcd-jsfwk-material:3.0.0-alpha-2"
 }
 
 repositories {
