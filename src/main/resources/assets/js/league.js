@@ -73,7 +73,7 @@ class LeagueLayout extends RcdMaterialLayout {
                 }).init());
             }
             if (league.leaguePlayers.length > 0) {
-                rightColumn.addChild(new PlayerRankingPanel({league: league, title: 'Players - Division 1'}).init());
+                rightColumn.addChild(new PlayerRankingPanel(league, 'Players - Division 1').init());
             }
 
             this.addChild(leftColumn)
