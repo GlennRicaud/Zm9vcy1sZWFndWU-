@@ -31,6 +31,14 @@ class LeagueLayout extends RcdMaterialLayout {
                     rating
                     ranking
                 }
+                leagueTeams(sort:"rating DESC", first:16) {
+                    team {
+                        name
+                        imageUrl
+                    }
+                    rating
+                    ranking
+                }
                 latestGames: games(first:10) {
                     id
                     time
@@ -78,6 +86,7 @@ class LeagueLayout extends RcdMaterialLayout {
             }
             if (league.leaguePlayers.length > 0) {
                 rightColumn.addChild(new PlayerRankingPanel(league, 'Players - Division 1').init());
+                rightColumn.addChild(new TeamRankingPanel(league, 'Teams - Division 1').init());
             }
 
             this.addChild(leftColumn)
