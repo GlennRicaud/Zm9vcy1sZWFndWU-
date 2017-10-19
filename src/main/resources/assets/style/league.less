@@ -1,0 +1,17 @@
+
+@media (min-width: @rcd-material-min-tablet-width) {
+  .league-layout :extend(.rcd-flex-hbox) {
+    flex-direction: row; //TODO Check why necessary
+    align-items: flex-start;
+    .left-column :extend(.rcd-flex-vbox) {
+      flex-grow: 2;
+    }
+    .right-column :extend(.rcd-flex-vbox) {
+      flex-grow: 1;
+      margin-left: @rcd-material-layout-margin;
+    }
+  }  
+}
+
+
+

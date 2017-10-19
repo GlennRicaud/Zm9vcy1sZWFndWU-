@@ -23,7 +23,7 @@ class LeagueLayout extends RcdMaterialLayout {
             league(id:$id){
                 id,
                 name,
-                leaguePlayers(sort:"rating DESC", first:16) {
+                leaguePlayers(sort:"rating DESC", first:8) {
                     player {
                         name
                         imageUrl
@@ -57,14 +57,18 @@ class LeagueLayout extends RcdMaterialLayout {
             }
         }`
     }
+    
+    init() {
+        return super.init().addClass('league-layout');
+    }
 
     refresh() {
         this.clear();
         return this.retrieveLeague().then(league => {
             FoosLeagueApplication.getInstance().setTitle(league.name);
 
-            const leftColumn = new RcdDivElement().init();
-            const rightColumn = new RcdDivElement().init();
+            const leftColumn = new RcdDivElement().init().addClass('left-column');
+            const rightColumn = new RcdDivElement().init().addClass('right-column');
             if (league.latestGames.length > 0) {
                 leftColumn.addChild(new GamePanel(league.latestGames[0], 'Latest game').init());
                 leftColumn.addChild(new GamesPanel(league.latestGames, 'Latest games', {
