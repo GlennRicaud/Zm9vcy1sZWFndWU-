@@ -1,6 +1,11 @@
 class FoosLeagueApplication extends RcdMaterialSinglePageApplication {
     constructor() {
-        super('Foos League');
+        super({
+            title:'Foos League',
+            nav: {
+                behaviour: RcdMaterialNavigationDrawerBehaviour.TEMPORARY
+            }
+        });
     }
 
     static getInstance() {
