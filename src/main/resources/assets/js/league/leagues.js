@@ -21,10 +21,13 @@ class LeaguesLayout extends RcdMaterialLayout {
     constructor() {
         super();
         this.query = `{
-            leagues{
+            leagues(first:-1){
                 id,
                 name,
                 imageUrl
+                games(first:1 , finished:true) {
+                    time
+                }
             }
         }`
     }
@@ -32,7 +35,8 @@ class LeaguesLayout extends RcdMaterialLayout {
     refresh() {
         this.clear();
         return this.retrieveLeagues().then(leagues => {
-            leagues.map(league => new LeagueResult(league).init())
+            leagues.sort(this.compareLeagues)
+                .map(league => new LeagueResult(league).init())
                 .forEach(leagueResult => this.addChild(leagueResult));
         });
     }
@@ -40,6 +44,20 @@ class LeaguesLayout extends RcdMaterialLayout {
     retrieveLeagues() {
         return GraphQlService.fetch(this.query)
             .then(data => data.leagues);
+    }
+
+    compareLeagues(league1, league2) {
+        if (league1.games.length === 0) {
+            if (league2.games.length === 0) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        if (league2.games.length === 0) {
+            return -1;
+        }
+        return league2.games[0].time.localeCompare(league1.games[0].time);
     }
 }
 
