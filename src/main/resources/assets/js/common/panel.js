@@ -29,15 +29,3 @@ class PanelTitle extends RcdTextDivElement {
         return super.init().addClass('panel-title');
     }
 }
-
-class Action extends RcdMaterialButtonArea {
-    init() {
-        return super.init().addClass('action');
-    }
-}
-
-class ImageIcon extends RcdImageIcon {
-    constructor(path) {
-        super(config.officeLeagueAppUrl + path);
-    }
-}

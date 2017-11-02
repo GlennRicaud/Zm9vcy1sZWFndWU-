@@ -58,13 +58,20 @@ jar.dependsOn lessc
 
 
 task mergeJs( type: com.eriwen.gradle.js.tasks.CombineJsTask ) {
-    source = ["${rootProject.buildDir}/resources/main/assets/js/graphql.js",
-              "${rootProject.buildDir}/resources/main/assets/js/common.js",
-              "${rootProject.buildDir}/resources/main/assets/js/items.js",
-              "${rootProject.buildDir}/resources/main/assets/js/games.js",
-              "${rootProject.buildDir}/resources/main/assets/js/ranking.js",
-              "${rootProject.buildDir}/resources/main/assets/js/leagues.js",
-              "${rootProject.buildDir}/resources/main/assets/js/league.js",
+    source = ["${rootProject.buildDir}/resources/main/assets/js/graphql/graphql.js",
+              "${rootProject.buildDir}/resources/main/assets/js/common/panel.js",
+              "${rootProject.buildDir}/resources/main/assets/js/common/button.js",
+              "${rootProject.buildDir}/resources/main/assets/js/common/image.js",
+              "${rootProject.buildDir}/resources/main/assets/js/common/items.js",
+              "${rootProject.buildDir}/resources/main/assets/js/game/game-side.js",
+              "${rootProject.buildDir}/resources/main/assets/js/game/game-panel.js",
+              "${rootProject.buildDir}/resources/main/assets/js/game/games-panel.js",
+              "${rootProject.buildDir}/resources/main/assets/js/game/game-helper.js",
+              "${rootProject.buildDir}/resources/main/assets/js/league/ranking.js",
+              "${rootProject.buildDir}/resources/main/assets/js/league/player-ranking.js",
+              "${rootProject.buildDir}/resources/main/assets/js/league/team-ranking.js",
+              "${rootProject.buildDir}/resources/main/assets/js/league/leagues.js",
+              "${rootProject.buildDir}/resources/main/assets/js/league/league.js",
               "${rootProject.buildDir}/resources/main/assets/js/app.js"]
     dest = file( "${rootProject.buildDir}/resources/main/assets/js/main.js" )
 }
